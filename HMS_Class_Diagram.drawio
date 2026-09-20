@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Class Diagram" id="hms-class">
+    <mxGraphModel dx="1071" dy="741" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=center;" value="Class Diagram - Hospital Management System" vertex="1">
+          <mxGeometry height="30" width="500" x="340" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cPatient" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Patient&lt;/b&gt;&lt;hr size=1&gt;- patientId: String&lt;br&gt;- name: String&lt;br&gt;- dob: Date&lt;br&gt;- contactNo: String&lt;hr size=1&gt;+ register()&lt;br&gt;+ bookAppointment()&lt;br&gt;+ makePayment()&lt;br&gt;+ cancelAppointment()" vertex="1">
+          <mxGeometry height="210" width="220" x="60" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cDoctor" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Doctor&lt;/b&gt;&lt;hr size=1&gt;- doctorId: String&lt;br&gt;- name: String&lt;br&gt;- specialization: String&lt;hr size=1&gt;+ viewMedicalRecords()&lt;br&gt;+ writePrescription()&lt;br&gt;+ updateDiagnosis()" vertex="1">
+          <mxGeometry height="190" width="220" x="330" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cReceptionist" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;Receptionist&lt;/b&gt;&lt;hr size=1&gt;- staffId: String&lt;br&gt;- name: String&lt;hr size=1&gt;+ registerPatient()&lt;br&gt;+ scheduleAppointment()&lt;br&gt;+ generateBill()" vertex="1">
+          <mxGeometry height="170" width="220" x="600" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cAdmin" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;Admin&lt;/b&gt;&lt;hr size=1&gt;- adminId: String&lt;br&gt;- name: String&lt;hr size=1&gt;+ manageStaffAccounts()&lt;br&gt;+ generateReports()" vertex="1">
+          <mxGeometry height="150" width="220" x="870" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="cAppointment" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;Appointment&lt;/b&gt;&lt;hr size=1&gt;- appointmentId: String&lt;br&gt;- date: Date&lt;br&gt;- time: String&lt;br&gt;- status: String&lt;hr size=1&gt;+ confirm()&lt;br&gt;+ cancel()" vertex="1">
+          <mxGeometry height="190" width="220" x="60" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="cBill" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;Bill&lt;/b&gt;&lt;hr size=1&gt;- billId: String&lt;br&gt;- amount: Double&lt;br&gt;- paymentStatus: String&lt;hr size=1&gt;+ generateBill()&lt;br&gt;+ makePayment()" vertex="1">
+          <mxGeometry height="170" width="220" x="340" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="cPrescription" parent="1" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;b&gt;Prescription&lt;/b&gt;&lt;hr size=1&gt;- prescriptionId: String&lt;br&gt;- medicines: String&lt;br&gt;- date: Date&lt;hr size=1&gt;+ writePrescription()" vertex="1">
+          <mxGeometry height="170" width="220" x="600" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="cPatient" style="endArrow=none;html=1;fontSize=11;labelBackgroundColor=none;" target="cAppointment" value="books (1 : 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="cDoctor" style="endArrow=none;html=1;fontSize=11;labelBackgroundColor=none;" target="cAppointment" value="attends (1 : 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="cReceptionist" style="endArrow=none;html=1;fontSize=11;labelBackgroundColor=none;" target="cAppointment" value="schedules (1 : 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="cAppointment" style="endArrow=none;html=1;fontSize=11;labelBackgroundColor=none;" target="cBill" value="generates (1 : 1)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="cDoctor" style="endArrow=none;html=1;fontSize=11;labelBackgroundColor=none;" target="cPrescription" value="writes (1 : 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="cPatient" style="endArrow=none;html=1;fontSize=11;labelBackgroundColor=none;" target="cPrescription" value="receives (1 : 0..*)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="cAdmin" style="endArrow=open;html=1;fontSize=11;labelBackgroundColor=none;dashed=1;" target="cReceptionist" value="manages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r8" edge="1" parent="1" source="cAdmin" style="endArrow=open;html=1;fontSize=11;labelBackgroundColor=none;dashed=1;" value="manages">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="560" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
