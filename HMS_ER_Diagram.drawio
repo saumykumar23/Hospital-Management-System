@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ER Diagram" id="hms-er">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="ER Diagram - Hospital Management System" style="text;html=1;fontSize=18;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="380" y="20" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- PATIENT -->
+        <mxCell id="ePatient" value="&lt;b&gt;PATIENT&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; patientId: String&lt;br&gt;name: String&lt;br&gt;dob: Date&lt;br&gt;contactNo: String" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- DOCTOR -->
+        <mxCell id="eDoctor" value="&lt;b&gt;DOCTOR&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; doctorId: String&lt;br&gt;name: String&lt;br&gt;specialization: String" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="310" y="100" width="200" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- RECEPTIONIST -->
+        <mxCell id="eReceptionist" value="&lt;b&gt;RECEPTIONIST&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; staffId: String&lt;br&gt;name: String" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="560" y="100" width="200" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- ADMIN -->
+        <mxCell id="eAdmin" value="&lt;b&gt;ADMIN&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; adminId: String&lt;br&gt;name: String" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="810" y="100" width="200" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- APPOINTMENT (central table) -->
+        <mxCell id="eAppointment" value="&lt;b&gt;APPOINTMENT&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; appointmentId: String&lt;br&gt;&lt;u&gt;FK&lt;/u&gt; patientId: String&lt;br&gt;&lt;u&gt;FK&lt;/u&gt; doctorId: String&lt;br&gt;&lt;u&gt;FK&lt;/u&gt; staffId: String&lt;br&gt;date: Date&lt;br&gt;time: String&lt;br&gt;status: String" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="380" y="420" width="220" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- BILL -->
+        <mxCell id="eBill" value="&lt;b&gt;BILL&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; billId: String&lt;br&gt;&lt;u&gt;FK&lt;/u&gt; appointmentId: String&lt;br&gt;amount: Double&lt;br&gt;paymentStatus: String" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="700" y="420" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- PRESCRIPTION -->
+        <mxCell id="ePrescription" value="&lt;b&gt;PRESCRIPTION&lt;/b&gt;&lt;hr size=1&gt;&lt;u&gt;PK&lt;/u&gt; prescriptionId: String&lt;br&gt;&lt;u&gt;FK&lt;/u&gt; appointmentId: String&lt;br&gt;&lt;u&gt;FK&lt;/u&gt; doctorId: String&lt;br&gt;medicines: String&lt;br&gt;date: Date" style="html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=8;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="60" y="420" width="220" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships with crow's foot notation -->
+        <mxCell id="rel1" value="books" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;fontSize=11;" edge="1" parent="1" source="ePatient" target="eAppointment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel2" value="attends" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;fontSize=11;" edge="1" parent="1" source="eDoctor" target="eAppointment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel3" value="schedules" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;fontSize=11;" edge="1" parent="1" source="eReceptionist" target="eAppointment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel4" value="generates" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;fontSize=11;" edge="1" parent="1" source="eAppointment" target="eBill">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel5" value="results in" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;fontSize=11;" edge="1" parent="1" source="eAppointment" target="ePrescription">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel6" value="writes" style="edgeStyle=entityRelationEdgeStyle;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;fontSize=11;" edge="1" parent="1" source="eDoctor" target="ePrescription">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel7" value="manages" style="edgeStyle=entityRelationEdgeStyle;html=1;dashed=1;startArrow=none;endArrow=open;fontSize=11;" edge="1" parent="1" source="eAdmin" target="eReceptionist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel8" value="manages" style="edgeStyle=entityRelationEdgeStyle;html=1;dashed=1;startArrow=none;endArrow=open;fontSize=11;" edge="1" parent="1" source="eAdmin" target="eDoctor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
