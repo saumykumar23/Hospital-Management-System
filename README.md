@@ -1,8 +1,6 @@
 # Hospital-Management-System
 Software Engineering Project
 
-Hospital Management System
-
 A Software Engineering group project that models a Hospital Management System (HMS) using UML diagrams. This repository contains the design documentation — use case diagrams, class diagrams, and supporting artifacts — created as part of our coursework.
 
 Project Overview
