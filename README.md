@@ -1,2 +1,2 @@
 # Hospital-Management-System
-Software Engineering group project
+Software Engineering Project
